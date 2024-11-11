@@ -1,23 +1,25 @@
 import PropTypes from 'prop-types';
+import { FaBookmark } from "react-icons/fa";
 
-const Blog = ({ blog }) => {
+const Blog = ({ blog, hendleAddToBookmark }) => {
     const { cover_photo, title, author_image, author_name, hashtag, post_date, reading_time } = blog;
 
     return (
-        <div className="mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="mx-auto bg-white rounded-lg shadow-lg overflow-hidden mb-8">
             <img src={cover_photo} alt="Cover" className="w-full object-cover" />
 
             <div className="p-4">
                 <div className="flex items-center justify-between space-x-3 mb-4">
-                   <div className='flex'>
-                   <img src={author_image} alt={author_name} className="w-10 h-10 rounded-full" />
-                    <div className="text-sm text-gray-600 ms-4">
-                        <p className="font-semibold">{author_name}</p>
-                        <p>{post_date} (4 Days ago)</p>
+                    <div className='flex'>
+                        <img src={author_image} alt={author_name} className="w-10 h-10 rounded-full" />
+                        <div className="text-sm text-gray-600 ms-4">
+                            <p className="font-semibold">{author_name}</p>
+                            <p>{post_date} (4 Days ago)</p>
+                        </div>
                     </div>
-                   </div>
                     <div className="ml-auto text-gray-500">
-                        <p>{reading_time}</p>
+                        <span >{reading_time}</span>
+                        <button className='ms-2 text-xl' onClick={hendleAddToBookmark}><FaBookmark></FaBookmark></button>
                     </div>
                 </div>
 
@@ -30,6 +32,7 @@ const Blog = ({ blog }) => {
                 </div>
 
                 <a href="#" className="text-blue-500 hover:underline text-sm">Mark as read</a>
+
             </div>
         </div>
     );
